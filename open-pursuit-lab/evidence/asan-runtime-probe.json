@@ -1,0 +1,28 @@
+{
+  "scope": "empty main sanitizer startup probe; no project core linked",
+  "date_utc": "2026-11-19T15:19:17.540635+00:00",
+  "platform": "macOS-26.6-arm64-arm-64bit",
+  "commands": [
+    {
+      "argv": [
+        "clang++",
+        "-std=c++20",
+        "-fsanitize=address,undefined",
+        "tools/sanitizer_probe.cpp",
+        "-o",
+        ".build/asan-probe"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        ".build/asan-probe"
+      ],
+      "exit_code": -6,
+      "stdout": "",
+      "stderr": "AddressSanitizer: CHECK failed: sanitizer_malloc_mac.inc:189 \"((!asan_init_is_running)) != (0)\" (0x0, 0x0) (tid=9095247)\n    <empty stack>\n\n"
+    }
+  ]
+}

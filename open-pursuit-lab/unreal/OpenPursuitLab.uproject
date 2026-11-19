@@ -1,0 +1,13 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.6",
+  "Category": "Engineering prototype",
+  "Description": "Unverified UE5 integration scaffold for the portable Open Pursuit Lab policy prototype.",
+  "Modules": [
+    { "Name": "OpenPursuitLab", "Type": "Runtime", "LoadingPhase": "Default" }
+  ],
+  "Plugins": [
+    { "Name": "ChaosVehiclesPlugin", "Enabled": true },
+    { "Name": "StateTree", "Enabled": true }
+  ]
+}

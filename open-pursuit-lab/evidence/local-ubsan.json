@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "scope": "portable C++ integer policy model only; Unreal integration NOT built or run",
+  "started_at_utc": "2026-11-19T15:24:28.975338+00:00",
+  "platform": "macOS-26.6-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.9.6",
+  "sanitizers": [
+    "undefined"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/clang++",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.098793,
+      "stdout": "Apple clang version 16.0.0 (clang-1600.0.26.6)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/clang++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-I",
+        "<project>/include",
+        "-O1",
+        "-g",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=all",
+        "-fno-omit-frame-pointer",
+        "<project>/src/core.cpp",
+        "<project>/tests/core_tests.cpp",
+        "-o",
+        "<project>/.build/ubsan/opl_tests"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.29627,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/clang++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-I",
+        "<project>/include",
+        "-O1",
+        "-g",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=all",
+        "-fno-omit-frame-pointer",
+        "<project>/src/core.cpp",
+        "<project>/src/main.cpp",
+        "-o",
+        "<project>/.build/ubsan/opl_demo"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.567443,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "<project>/.build/ubsan/opl_tests"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.776551,
+      "stdout": "[PASS] patrol ignores visibility without an incident\n[PASS] unseen incident investigates then searches on exact boundary\n[PASS] visibility acquires suspect and loss timer resets\n[PASS] search cools down and eventually clears heat\n[PASS] search and cooldown allow reacquisition\n[PASS] heat escalates monotonically until cleared\n[PASS] new incident interrupts cooldown\n[PASS] traffic rejects unsupported density\n[PASS] traffic stops at red and resumes at green\n[PASS] traffic spacing holds across seeds and signals\n[PASS] 100-car ring preserves spacing\n[PASS] race requires ordered bounded crossings\n[PASS] server rejects ownership range tick and duplicate attacks\n[PASS] rejected commands leave server state unchanged\n[PASS] sequence wraps but half-range ambiguity is rejected\n[PASS] missing input decays instead of retaining throttle\n[PASS] server speed cap and geometric race finish\n[PASS] server invalid incident does not partially advance tick\n[PASS] observer rejects stale duplicate and reordered snapshots\n[PASS] snapshot link validates bounded configuration\n[PASS] total packet loss delivers nothing\n[PASS] delay boundary and duplicate suppression\n[PASS] adverse link reorders packets without observer rollback\n[PASS] snapshot observer converges after explicit no-loss recovery\n[PASS] recorded replay baseline detects policy drift\n[PASS] integer replay is repeatable and seed-sensitive\ntests=26 passed=26 failed=0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "<project>/.build/ubsan/opl_demo",
+        "--seed",
+        "2026",
+        "--ticks",
+        "3600",
+        "--trace",
+        "<project>/.build/ubsan/demo-trace.csv"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.578565,
+      "stdout": "{\n  \"scope\": \"headless integer policy prototype; in-process snapshot channel\",\n  \"seed\": 2026, \"ticks\": 3600, \"tick_hz\": 60,\n  \"traffic_cars\": 20, \"traffic_spacing_safe\": true,\n  \"race_checkpoints\": 4, \"travel_mm\": 1757924,\n  \"pursuit_final\": \"Patrol\", \"pursuit_transitions\": [{\"tick\":61,\"state\":\"Chase\"},{\"tick\":480,\"state\":\"Search\"},{\"tick\":1080,\"state\":\"Cooldown\"},{\"tick\":1380,\"state\":\"Patrol\"}],\n  \"snapshot_packets_sent\": 1200, \"snapshot_packets_dropped\": 53, \"snapshot_packets_duplicated\": 120, \"stale_snapshots_rejected\": 509,\n  \"observer_tick_before_recovery\": 3591, \"converged_after_explicit_no_loss_tail\": true,\n  \"replay_digest\": \"28b84a5f94c2a8ea\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "<project>/.build/ubsan/opl_demo",
+        "--seed",
+        "2026",
+        "--ticks",
+        "3600"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.014932,
+      "stdout": "{\n  \"scope\": \"headless integer policy prototype; in-process snapshot channel\",\n  \"seed\": 2026, \"ticks\": 3600, \"tick_hz\": 60,\n  \"traffic_cars\": 20, \"traffic_spacing_safe\": true,\n  \"race_checkpoints\": 4, \"travel_mm\": 1757924,\n  \"pursuit_final\": \"Patrol\", \"pursuit_transitions\": [{\"tick\":61,\"state\":\"Chase\"},{\"tick\":480,\"state\":\"Search\"},{\"tick\":1080,\"state\":\"Cooldown\"},{\"tick\":1380,\"state\":\"Patrol\"}],\n  \"snapshot_packets_sent\": 1200, \"snapshot_packets_dropped\": 53, \"snapshot_packets_duplicated\": 120, \"stale_snapshots_rejected\": 509,\n  \"observer_tick_before_recovery\": 3591, \"converged_after_explicit_no_loss_tail\": true,\n  \"replay_digest\": \"28b84a5f94c2a8ea\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "<project>/.build/ubsan/opl_demo",
+        "--ticks",
+        "0"
+      ],
+      "exit_code": 2,
+      "elapsed_seconds": 0.006283,
+      "stdout": "",
+      "stderr": "ticks must be 1..100000\n"
+    },
+    {
+      "argv": [
+        "<project>/.build/ubsan/opl_demo",
+        "--ticks",
+        "abc"
+      ],
+      "exit_code": 2,
+      "elapsed_seconds": 0.005971,
+      "stdout": "",
+      "stderr": "invalid integer\n"
+    },
+    {
+      "argv": [
+        "<project>/.build/ubsan/opl_demo",
+        "--seed",
+        "-1"
+      ],
+      "exit_code": 2,
+      "elapsed_seconds": 0.006168,
+      "stdout": "",
+      "stderr": "invalid integer\n"
+    },
+    {
+      "argv": [
+        "<project>/.build/ubsan/opl_demo",
+        "--unknown"
+      ],
+      "exit_code": 2,
+      "elapsed_seconds": 0.006171,
+      "stdout": "",
+      "stderr": "usage: opl_demo [--seed N] [--ticks 1..100000] [--trace file.csv] | --benchmark\n"
+    },
+    {
+      "argv": [
+        "<project>/.build/ubsan/opl_demo",
+        "--seed"
+      ],
+      "exit_code": 2,
+      "elapsed_seconds": 0.005873,
+      "stdout": "",
+      "stderr": "usage: opl_demo [--seed N] [--ticks 1..100000] [--trace file.csv] | --benchmark\n"
+    }
+  ],
+  "source_sha256": {
+    ".gitattributes": "2fb3b0ac583f514869c0ded5fbb6fdf21e8730f3da3cd42483f373853d83aa7f",
+    ".github/ISSUE_TEMPLATE/engineering_task.yml": "43d8b8392163651e6c98e2b09ee052efe2038f29a000da597ffdfd6d148ad89f",
+    ".github/workflows/portable.yml": "53cccf0a27b4fc7eda28874594befeca35094ac59ab16a04f0c5534563955df2",
+    ".gitignore": "97ce8b1e16c2445bf36f9e1ba4c1953a58713087f44850e1aa8f17147c645951",
+    "CMakeLists.txt": "c0545dc0962f4461d54006a63a7440a236a204d4c52c37e2a4357431674ab5fd",
+    "CONTRIBUTING.md": "cb630500910c57af422a8011b2ce7c6fa6419c58611fe69dcdce82d73f0dedb5",
+    "LICENSE": "8d8ce1f310929e52aa64ee2dde3dbcfbc2420308041aa92325a0c08a1b3976c3",
+    "README.md": "f8801a95345d15262d686ed39add417a30de22d78ba99a3dd97143abc166a689",
+    "docs/ARCHITECTURE.md": "35894edee3633b2f0835469dc96e648c8dd2c3fd630c6a72354ad9e93f9f44a5",
+    "docs/BACKLOG.md": "285e3492755179979edad36494bf0a48a8dd95d4eae01cd5e827d29758bda4f7",
+    "docs/DEVIN_START_HERE.md": "8df7bf70261e18ccae8599f99c793564fd6b066a00c49f524da274db462fa445",
+    "docs/EXTERNAL_BRIEF.md": "c1d54c4b7f279fdc81e74bbfd0b5e5d5ef20710de45c98854c06be54605fccb0",
+    "docs/SCOPE.md": "c12d0728ee1b7f4617898b2e54b3241d183cbaf01404cd52527fc472b6853c9e",
+    "docs/STATUS.md": "53b0044728cbb271c1b032f7fe210b98547d2f5fb06ac3b6bbeadab81f9ea7db",
+    "docs/TEST_PLAN.md": "68efa42ecd50f29a7f69ac5f397f0e0b5674ffee8e4f003e5e544051760b9ef3",
+    "docs/UE_INTEGRATION.md": "3f18d649851750eed74168d7b0f48fb1098f7f02b720828f822e8ee2c60f7205",
+    "docs/adr/001-authority-and-determinism.md": "66e6db0052f489bb5567cf246a42d62ab170f81039be144c06e7ba0582fe7303",
+    "docs/backlog.csv": "acae156f652768c053f279c4906809e528094d9474af69abf212e48e67ce51d8",
+    "include/opl/core.hpp": "13a85a4c7f84e4c789fa7f6a773b01756b409d677671e78ddee32758365a1a25",
+    "src/core.cpp": "51b8be799139df3302db07544f3f1bb2ea5f3f66c1c29269aaa8a623b4ef9811",
+    "src/main.cpp": "f144b6f5ccb3445ff50d7d98374fee18561ad10f2762dd893440eb182891fcd2",
+    "tests/core_tests.cpp": "d01fba85d45ddb52f4cebae04569da3e34d444e9bb671f920a5918a4e292001c",
+    "tools/check_delivery.py": "9bcfcedfd058b92305afb3e5097a097c7639cb63e895eb857146a6d4ebe31110",
+    "tools/sanitizer_probe.cpp": "5be6b2d41097ff421c0db862dfadd2b17da8e4a05f1f261f19f95c4519a119ca",
+    "tools/verify.py": "f0c535a2651b5e4368f08fcd5ce3b3b996e2eddf3393482238935bae68fbb1c0",
+    "unreal/Config/DefaultGame.ini": "cee2627a16b29283cbad2e004a7c38af7827a476b7294f0b6f393c68034cf836",
+    "unreal/OpenPursuitLab.uproject": "eecb7eca8f86dd0ed143de5586a219f0820cab11545a432d2b3459cdbcd9afff",
+    "unreal/README.md": "2c781c37ee73c7f0d053937b961eff6e4d8359ec8dc39078741a724d56313ab5",
+    "unreal/Source/OpenPursuitLab/OpenPursuitLab.Build.cs": "412cb05c6a444ff76bbcc4e9454261732c95f5425ea8b069d420418672378f95",
+    "unreal/Source/OpenPursuitLab/Private/OpenPursuitLab.cpp": "4a554df9b5616dc7655ab9a26cb9533a95f2a89b69423556fe6cff8af3edee3f",
+    "unreal/Source/OpenPursuitLab/Private/PortablePolicy.cpp": "4da3bb59064f9ebf0c4571212a651143a4b0f071e943f4c8544c33b6ec191356",
+    "unreal/Source/OpenPursuitLab/Private/PursuitDirectorComponent.cpp": "ff780d7853a65656868bad1d959fb4ef352414567ad1744de09d4c7c0bd86f63",
+    "unreal/Source/OpenPursuitLab/Public/PursuitDirectorComponent.h": "9f0a555a648974380d4d02e21aeaea9e4dd37bf93841978c878b301cdb603a52",
+    "unreal/Source/OpenPursuitLab.Target.cs": "9a6d67b7aa7ff46c58f86d6f7678228fe98af18364b935ee2d168e9971c3996d",
+    "unreal/Source/OpenPursuitLabEditor.Target.cs": "607e3823759ddb2ac323c36d0d7a0b6dc54b6708cb13c76f7dfdd99bd3d1bb37",
+    "unreal/Source/OpenPursuitLabServer.Target.cs": "957430b867b326be6635c5a96b814c034209fa32b3b36d3dbeba9b5b954aec56"
+  },
+  "compiler": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+  "tests": {
+    "total": 26,
+    "passed": 26,
+    "failed": 0
+  },
+  "demo": {
+    "scope": "headless integer policy prototype; in-process snapshot channel",
+    "seed": 2026,
+    "ticks": 3600,
+    "tick_hz": 60,
+    "traffic_cars": 20,
+    "traffic_spacing_safe": true,
+    "race_checkpoints": 4,
+    "travel_mm": 1757924,
+    "pursuit_final": "Patrol",
+    "pursuit_transitions": [
+      {
+        "tick": 61,
+        "state": "Chase"
+      },
+      {
+        "tick": 480,
+        "state": "Search"
+      },
+      {
+        "tick": 1080,
+        "state": "Cooldown"
+      },
+      {
+        "tick": 1380,
+        "state": "Patrol"
+      }
+    ],
+    "snapshot_packets_sent": 1200,
+    "snapshot_packets_dropped": 53,
+    "snapshot_packets_duplicated": 120,
+    "stale_snapshots_rejected": 509,
+    "observer_tick_before_recovery": 3591,
+    "converged_after_explicit_no_loss_tail": true,
+    "replay_digest": "28b84a5f94c2a8ea"
+  },
+  "benchmark": null,
+  "finished_at_utc": "2026-11-19T15:24:35.373997+00:00"
+}
